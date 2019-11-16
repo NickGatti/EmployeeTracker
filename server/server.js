@@ -23,9 +23,9 @@ app.get('/employees', (req, res) => {
 app.post('/employee', (req, res) => {
     insertOne(req.body, (err, success) => {
         if (err) {
-            res.status(500).end('Error inserting')
+            res.status(500).json({ success: false })
         } else {
-            res.end()
+            res.json({ success: true })
         }
     })
 })

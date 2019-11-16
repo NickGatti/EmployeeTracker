@@ -1,27 +1,42 @@
 import React from 'react'
-import axios from 'axios'
-import Employees from './components/Employees.jsx'
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
 
-class App extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            employees: []
-        }
-    }
+import AddEmployee from './components/AddEmployee.jsx'
+import EmployeeList from './components/EmployeeList.jsx'
+import Home from './components/Home.jsx'
 
-    async componentDidMount() {
-        let res = await axios.get('/employees')
-        this.setState({ employees: res.data })
-    }
-
-    render() {
-        return (
+export default () => {
+    return (
+        <Router>
             <div>
-                <Employees data={this.state.employees} />
+                <ul>
+                    <li>
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li>
+                        <Link to="/list">List employees</Link>
+                    </li>
+                    <li>
+                        <Link to="/add">Add employee</Link>
+                    </li>
+                </ul>
+                <Switch>
+                    <Route path="/list">
+                        <EmployeeList />
+                    </Route>
+                    <Route path="/add">
+                        <AddEmployee />
+                    </Route>
+                    <Route path="/">
+                        <Home />
+                    </Route>
+                </Switch>
             </div>
-        )
-    }
+        </Router>
+    )
 }
-
-export default App
