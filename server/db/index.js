@@ -39,8 +39,18 @@ const insertOne = function (personToInsert, callback) {
     });
 }
 
-const upVote = function ({personToUpVote, rating}, callback) {
-    Person.update({_id: personToUpVote}, {$set: { rating: rating + 1 }}, (err, success) => {
+const upVote = function ({ personToUpVote, rating }, callback) {
+    Person.update({ _id: personToUpVote }, { $set: { rating: rating + 1 } }, (err, success) => {
+        if (err) {
+            callback(err, null)
+        } else {
+            callback(null, err)
+        }
+    })
+}
+
+const downVote = function ({ personToDownVote, rating }, callback) {
+    Person.update({ _id: personToDownVote}, { $set: { rating: rating - 1 } }, (err, success) => {
         if (err) {
             callback(err, null)
         } else {
@@ -52,5 +62,6 @@ const upVote = function ({personToUpVote, rating}, callback) {
 module.exports = {
     selectAll,
     insertOne,
-    upVote
+    upVote,
+    downVote
 };

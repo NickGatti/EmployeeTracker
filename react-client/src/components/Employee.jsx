@@ -9,6 +9,7 @@ export default ({ employee, updateList }) => {
 
     const downVote = async () => {
         const res = await axios.put('/employee/downvote', { personToDownVote: employee._id, rating: employee.rating || 0 })
+        updateList()
     }
 
     return (
