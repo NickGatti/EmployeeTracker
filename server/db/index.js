@@ -39,7 +39,18 @@ const insertOne = function (personToInsert, callback) {
     });
 }
 
+const upVote = function ({personToUpVote, rating}, callback) {
+    Person.update({_id: personToUpVote}, {$set: { rating: rating + 1 }}, (err, success) => {
+        if (err) {
+            callback(err, null)
+        } else {
+            callback(null, err)
+        }
+    })
+}
+
 module.exports = {
     selectAll,
-    insertOne
+    insertOne,
+    upVote
 };

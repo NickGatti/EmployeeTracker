@@ -26,7 +26,7 @@ class AddEmployee extends React.Component {
     }
 
     handleRating(e) {
-        this.setState({ rating: e.target.rating })
+        this.setState({ rating: e.target.value })
     }
 
     async addEmployee(e) {

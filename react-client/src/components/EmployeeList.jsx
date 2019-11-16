@@ -8,15 +8,23 @@ class EmployeeList extends React.Component {
         this.state = {
             employees: []
         }
+        this.updateList = this.updateList.bind(this)
     }
 
     async componentDidMount() {
         let res = await axios.get('/employees')
+
+        this.setState({ employees: res.data })
+    }
+
+    async updateList() {
+        let res = await axios.get('/employees')
+
         this.setState({ employees: res.data })
     }
 
     render() {
-        const employeeList = this.state.employees.map((employee, idx) => <Employee key={idx} employee={employee} />)
+        const employeeList = this.state.employees.map((employee, idx) => <Employee key={idx} employee={employee} updateList={this.updateList} />)
         return (
             <div>
                 {employeeList}
