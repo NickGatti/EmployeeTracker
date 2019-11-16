@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://nick:donny1@ds043338.mlab.com:43338/employeetracker');
 
 const db = mongoose.connection;
 
@@ -11,14 +11,15 @@ db.once('open', function () {
     console.log('mongoose connected successfully');
 });
 
-var employeeSchema = mongoose.Schema({
+const employeeSchema = mongoose.Schema({
     firstName: String,
-    lastName: String
+    lastName: String,
+    rating: { type: Number, min: 0, max: 10 }
 });
 
-var Person = mongoose.model('Person', employeeSchema);
+const Person = mongoose.model('Person', employeeSchema);
 
-var selectAll = function (callback) {
+const selectAll = function (callback) {
     Person.find({}, function (err, people) {
         if (err) {
             callback(err, null);
@@ -28,4 +29,17 @@ var selectAll = function (callback) {
     });
 };
 
-module.exports.selectAll = selectAll;
+const insertOne = function (personToInsert, callback) {
+    Person.create(personToInsert, function (err, small) {
+        if (err) {
+            callback(err, null)
+        } else {
+            callback(null, small)
+        }
+    });
+}
+
+module.exports = {
+    selectAll,
+    insertOne
+};

@@ -1,11 +1,17 @@
 import React from 'react'
+import axios from 'axios'
 
 class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            init: true
+            employees: []
         }
+    }
+
+    async componentDidMount() {
+        let res = await axios.get('/employees')
+        this.setState({ employees: res.data })
     }
 
     render() {
