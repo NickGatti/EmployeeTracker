@@ -1,6 +1,9 @@
 import React from 'react'
 import axios from 'axios'
 
+// import "../../../node_modules/bootswatch/dist/materia/bootstrap.min.css"
+// import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+
 class AddEmployee extends React.Component {
     constructor() {
         super()
@@ -52,23 +55,25 @@ class AddEmployee extends React.Component {
     render() {
         return (
             <div>
-                <form>
-                    <label htmlFor="firstName">First Name</label>
-                    <input
-                        onChange={this.handleFirstName}
-                        id="firstName" name="firstName" type="text" />
-                    <label htmlFor="lastName">Last Name</label>
-                    <input
-                        onChange={this.handleLastName}
-                        id="lastName" name="lastName" type="text" />
-                    <label htmlFor="rating">Rating</label>
-                    <input
-                        onChange={this.handleRating}
-                        id="rating" name="rating" type="number" />
-                    <button
+                <Form>
+                    <FormGroup>
+                        <Label htmlFor="firstName">First Name</Label>
+                        <Input
+                            onChange={this.handleFirstName}
+                            id="firstName" name="firstName" type="text" />
+                        <Label htmlFor="lastName">Last Name</Label>
+                        <Input
+                            onChange={this.handleLastName}
+                            id="lastName" name="lastName" type="text" />
+                        <Label htmlFor="rating">Rating</Label>
+                        <Input
+                            onChange={this.handleRating}
+                            id="rating" name="rating" type="number" />
+                    </FormGroup>
+                    <Button
                         onClick={this.addEmployee}
-                    >Submit</button>
-                </form>
+                    >Submit</Button>
+                </Form>
                 <p>{this.state.submitted && !this.state.error ? "Thank you!" : this.state.submitted && this.state.error ? "Sorry error!" : ''}</p>
             </div>
         )
