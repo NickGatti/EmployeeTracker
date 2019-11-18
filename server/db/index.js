@@ -17,7 +17,14 @@ const employeeSchema = mongoose.Schema({
     rating: { type: Number, min: 0, max: 10 }
 });
 
+const employerSchema = mongoose.Schema({
+    name: String,
+    email: String,
+    password: String
+})
+
 const Person = mongoose.model('Person', employeeSchema);
+const Employer = mongoose.model('Employer', employerSchema);
 
 const selectAll = function (callback) {
     Person.find({}, function (err, people) {
@@ -30,11 +37,11 @@ const selectAll = function (callback) {
 };
 
 const insertOne = function (personToInsert, callback) {
-    Person.create(personToInsert, function (err, small) {
+    Person.create(personToInsert, function (err, success) {
         if (err) {
             callback(err, null)
         } else {
-            callback(null, small)
+            callback(null, success)
         }
     });
 }
@@ -44,17 +51,37 @@ const upVote = function ({ personToUpVote, rating }, callback) {
         if (err) {
             callback(err, null)
         } else {
-            callback(null, err)
+            callback(null, success)
         }
     })
 }
 
 const downVote = function ({ personToDownVote, rating }, callback) {
-    Person.update({ _id: personToDownVote}, { $set: { rating: rating - 1 } }, (err, success) => {
+    Person.update({ _id: personToDownVote }, { $set: { rating: rating - 1 } }, (err, success) => {
         if (err) {
             callback(err, null)
         } else {
-            callback(null, err)
+            callback(null, success)
+        }
+    })
+}
+
+const createEmployer = function ({ name, email, password }, callback) {
+    Employer.find({ email }, (err, result) => {
+        if (err) {
+            callback(err, null)
+        } else {
+            if (result.length === 0) {
+                Employer.create({ name, email, password }, (err2, result2) => {
+                    if (err2) {
+                        callback(err, null)
+                    } else {
+                        callback(null, result2)
+                    }
+                })
+            } else {
+                callback({ error: "Email Already Exists" }, null)
+            }
         }
     })
 }
@@ -63,5 +90,6 @@ module.exports = {
     selectAll,
     insertOne,
     upVote,
-    downVote
+    downVote,
+    createEmployer
 };

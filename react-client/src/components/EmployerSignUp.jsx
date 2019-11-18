@@ -1,0 +1,43 @@
+import React from 'react'
+
+class EmployerSignUp extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            name: '',
+            email: '',
+            password: ''
+        }
+        this.submit = this.submit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+    }
+
+    submit(e) {
+        e.preventDefault()
+        console.log('submitting!');
+    }
+
+    handleChange(e) {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    render() {
+        return (
+            <div>
+                <form>
+                    <label>Employer Name</label>
+                    <input type="text" name="name" />
+                    <label>Employer Email</label>
+                    <input type="text" name="email" />
+                    <label>Password</label>
+                    <input type="password" name="password"></input>
+                    <button onClick={this.submit}>Sign up</button>
+                </form>
+            </div>
+        )
+    }
+}
+
+export default EmployerSignUp
