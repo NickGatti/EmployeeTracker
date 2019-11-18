@@ -86,10 +86,29 @@ const createEmployer = function ({ name, email, password }, callback) {
     })
 }
 
+const employerLogin = function ({ email, password }, callback) {
+    Employer.find({ email }, (err, result) => {
+        if (err) {
+            callback(err, null)
+        } else {
+            if (result.length === 1) {
+                if (result[0].password === password) {
+                    callback(null, result)
+                } else {
+                    callback('Wrong password', null)
+                }
+            } else {
+                callback('email not found', null)
+            }
+        }
+    })
+}
+
 module.exports = {
     selectAll,
     insertOne,
     upVote,
     downVote,
-    createEmployer
+    createEmployer,
+    employerLogin
 };
