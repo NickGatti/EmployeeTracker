@@ -40,10 +40,12 @@ class AddEmployee extends React.Component {
             password: localStorage.getItem('password')
         })
 
-        if (res.status === 200) {
-            this.setState({ submitted: true, error: false })
-        } else {
+        console.log(res.data)
+
+        if (!res.data.success) {
             this.setState({ submitted: true, error: true })
+        } else {
+            this.setState({ submitted: true, error: false })
         }
     }
 

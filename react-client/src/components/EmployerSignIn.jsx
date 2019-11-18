@@ -48,7 +48,7 @@ class EmployerSignIn extends React.Component {
                     <input onChange={this.handleChange} type="text" name="email" />
                     <label>password</label>
                     <input onChange={this.handleChange} type="password" name="password" />
-                    <button onClick={this.submit}></button>
+                    <button onClick={this.submit}>Login</button>
                 </form>
             </div>
         )

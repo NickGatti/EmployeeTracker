@@ -73,10 +73,9 @@ app.post('/employer/login', (req, res) => {
 })
 
 function isLoggedIn(req, res, next) {
-    console.log(req.body)
     employerLogin({ email: req.body.email, password: req.body.password }, (err, result) => {
         if (err) {
-            res.status(500).end()
+            res.json({ success: false })
         } else {
             next()
         }

@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 
 class EmployerSignUp extends React.Component {
     constructor() {
@@ -32,11 +33,11 @@ class EmployerSignUp extends React.Component {
             <div>
                 <form>
                     <label>Employer Name</label>
-                    <input type="text" name="name" />
+                    <input onChange={this.handleChange} type="text" name="name" />
                     <label>Employer Email</label>
-                    <input type="text" name="email" />
+                    <input onChange={this.handleChange} type="text" name="email" />
                     <label>Password</label>
-                    <input type="password" name="password"></input>
+                    <input onChange={this.handleChange} type="password" name="password"></input>
                     <button onClick={this.submit}>Sign up</button>
                 </form>
             </div>
