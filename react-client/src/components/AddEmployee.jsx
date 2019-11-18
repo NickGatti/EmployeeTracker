@@ -35,7 +35,9 @@ class AddEmployee extends React.Component {
         const res = await axios.post('/employee', {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
-            rating: this.state.rating
+            rating: this.state.rating,
+            email: localStorage.getItem('email'),
+            password: localStorage.getItem('password')
         })
 
         if (res.status === 200) {

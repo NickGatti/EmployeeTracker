@@ -21,7 +21,7 @@ app.get('/employees', (req, res) => {
     })
 })
 
-app.post('/employee', (req, res) => {
+app.post('/employee', isLoggedIn, (req, res) => {
     insertOne(req.body, (err, success) => {
         if (err) {
             res.status(500).json({ success: false })
@@ -66,10 +66,22 @@ app.post('/employer/login', (req, res) => {
         if (err) {
             res.status(500).json({ success: false })
         } else {
+            result[0]._doc.success = true
             res.json(result)
         }
     })
 })
+
+function isLoggedIn(req, res, next) {
+    console.log(req.body)
+    employerLogin({ email: req.body.email, password: req.body.password }, (err, result) => {
+        if (err) {
+            res.status(500).end()
+        } else {
+            next()
+        }
+    })
+}
 
 app.listen(port, function () {
     console.log('Listening on', port);

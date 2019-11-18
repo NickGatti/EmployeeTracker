@@ -36,8 +36,8 @@ const selectAll = function (callback) {
     });
 };
 
-const insertOne = function (personToInsert, callback) {
-    Person.create(personToInsert, function (err, success) {
+const insertOne = function ({ firstName, lastName, rating }, callback) {
+    Person.create({ firstName, lastName, rating }, function (err, success) {
         if (err) {
             callback(err, null)
         } else {

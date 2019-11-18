@@ -10,6 +10,7 @@ import AddEmployee from './components/AddEmployee.jsx'
 import EmployeeList from './components/EmployeeList.jsx'
 import Home from './components/Home.jsx'
 import EmployerSignUp from './components/EmployerSignUp.jsx'
+import EmployerLogin from './components/EmployerSignIn.jsx'
 
 export default () => {
     return (
@@ -28,6 +29,9 @@ export default () => {
                     <li>
                         <Link to="/employerSignUp">Employer Sign Up</Link>
                     </li>
+                    <li>
+                        <Link to="/employerLogin">Employer Login</Link>
+                    </li>
                 </ul>
                 <Switch>
                     <Route path="/list">
@@ -38,6 +42,9 @@ export default () => {
                     </Route>
                     <Route path="/employerSignUp">
                         <EmployerSignUp />
+                    </Route>
+                    <Route path="/employerLogin">
+                        <EmployerLogin />
                     </Route>
                     <Route path="/">
                         <Home />

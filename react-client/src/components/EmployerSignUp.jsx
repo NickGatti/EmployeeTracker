@@ -12,9 +12,13 @@ class EmployerSignUp extends React.Component {
         this.handleChange = this.handleChange.bind(this)
     }
 
-    submit(e) {
+    async submit(e) {
         e.preventDefault()
-        console.log('submitting!');
+        let res = axios.post('http://localhost:8000/employer/create', {
+            name: this.state.name,
+            email: this.state.email,
+            password: this.state.password
+        })
     }
 
     handleChange(e) {
