@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://nick:donny1@ds043338.mlab.com:43338/employeetracker');
+mongoose.connect('mongodb://nick:donny1@ds043338.mlab.com:43338/employeetracker', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
 
@@ -66,6 +66,16 @@ const downVote = function ({ personToDownVote, rating }, callback) {
     })
 }
 
+const deleteUser = function ({ id }, callback) {
+    Person.deleteOne({ _id: id }, (err, result) => {
+        if (err) {
+            callback(err, null)
+        } else {
+            callback(null, result)
+        }
+    })
+}
+
 const createEmployer = function ({ name, email, password }, callback) {
     Employer.find({ email }, (err, result) => {
         if (err) {
@@ -110,5 +120,6 @@ module.exports = {
     upVote,
     downVote,
     createEmployer,
-    employerLogin
+    employerLogin,
+    deleteUser
 };

@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 const port = process.env.PORT || 8000;
 
-const { selectAll, insertOne, upVote, downVote, createEmployer, employerLogin } = require('./db/index.js')
+const { selectAll, insertOne, upVote, downVote, createEmployer, employerLogin, deleteUser } = require('./db/index.js')
 
 app.use(express.static(path.join(__dirname, '../react-client/dist')))
 app.use(bodyParser.json({ extended: true }));
@@ -43,6 +43,16 @@ app.put('/employee/upvote', (req, res) => {
 
 app.put('/employee/downvote', (req, res) => {
     downVote({ personToDownVote: req.body.personToDownVote, rating: req.body.rating }, (err, success) => {
+        if (err) {
+            res.status(500).json({ success: false })
+        } else {
+            res.json({ success: true })
+        }
+    })
+})
+
+app.delete('/employee/delete', (req, res) => {
+    deleteUser({ id: req.body.personToDelete }, (err, success) => {
         if (err) {
             res.status(500).json({ success: false })
         } else {

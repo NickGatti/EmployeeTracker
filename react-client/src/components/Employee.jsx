@@ -18,6 +18,13 @@ export default ({ employee, updateList }) => {
         updateList()
     }
 
+    const deleteUser = async () => {
+        const res = await axios.delete('/employee/delete', {
+            data: { personToDelete: employee._id }
+        })
+        updateList()
+    }
+
     return (
         <div>
             <Card>
@@ -25,7 +32,7 @@ export default ({ employee, updateList }) => {
                     <CardTitle>{employee.firstName} {employee.lastName}</CardTitle>
                     <CardText>Rating: {employee.rating}</CardText>
                     <CardBody>
-                        <Button onClick={upVote}>Upvote</Button> <Button onClick={downVote}>Downvote</Button>
+                        <Button onClick={upVote}>Upvote</Button> <Button onClick={downVote}>Downvote</Button> <Button onClick={deleteUser} color="danger">Delete</Button>
                     </CardBody>
                 </CardBody>
             </Card>
