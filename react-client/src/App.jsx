@@ -1,4 +1,5 @@
 require('babel-polyfill')
+import 'bootswatch/dist/slate/bootstrap.min.css';
 import React from 'react'
 import {
     BrowserRouter as Router,
@@ -16,7 +17,7 @@ import EmployerLogin from './components/EmployerSignIn.jsx'
 export default () => {
     return (
         <Router>
-            <div>
+            <div style={{ padding: "2em" }}>
                 <ul>
                     <li>
                         <Link to="/">Home</Link>

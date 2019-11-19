@@ -23,7 +23,10 @@ export default ({ employee, updateList }) => {
             <Card>
                 <CardBody>
                     <CardTitle>{employee.firstName} {employee.lastName}</CardTitle>
-                    <CardText>Rating: {employee.rating} <button onClick={upVote}>Upvote</button> <button onClick={downVote}>Downvote</button></CardText>
+                    <CardText>Rating: {employee.rating}</CardText>
+                    <CardBody>
+                        <Button onClick={upVote}>Upvote</Button> <Button onClick={downVote}>Downvote</Button>
+                    </CardBody>
                 </CardBody>
             </Card>
         </div>

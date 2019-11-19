@@ -2,12 +2,15 @@ require('babel-polyfill')
 import React from 'react'
 import axios from 'axios'
 
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+
 class EmployerSignIn extends React.Component {
     constructor() {
         super()
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            whoops: false
         }
         this.submit = this.submit.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -17,8 +20,7 @@ class EmployerSignIn extends React.Component {
         e.preventDefault()
         let res = await axios.post('/employer/login', {
             email: this.state.email,
-            password: this.state.password,
-            whoops: false
+            password: this.state.password
         })
 
         if (!res.data[0].success) {
@@ -42,16 +44,16 @@ class EmployerSignIn extends React.Component {
 
     render() {
         return (
-            <div>
-                <form>
-                    <div>{this.state.whoops ? '' : 'Invalid login'}</div>
-                    <label>email</label>
-                    <input onChange={this.handleChange} type="text" name="email" />
-                    <label>password</label>
-                    <input onChange={this.handleChange} type="password" name="password" />
-                    <button onClick={this.submit}>Login</button>
-                </form>
-            </div>
+            <Form style={{ padding: "2em" }}>
+                <FormGroup>
+                    <FormText>{!this.state.whoops ? '' : 'Invalid login'}</FormText>
+                    <Label>email</Label>
+                    <Input onChange={this.handleChange} type="text" name="email" />
+                    <Label>password</Label>
+                    <Input onChange={this.handleChange} type="password" name="password" />
+                </FormGroup>
+                <Button onClick={this.submit}>Login</Button>
+            </Form>
         )
     }
 }

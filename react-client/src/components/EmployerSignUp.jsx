@@ -2,6 +2,8 @@ require('babel-polyfill')
 import React from 'react'
 import axios from 'axios'
 
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+
 class EmployerSignUp extends React.Component {
     constructor() {
         super()
@@ -31,17 +33,17 @@ class EmployerSignUp extends React.Component {
 
     render() {
         return (
-            <div>
-                <form>
-                    <label>Employer Name</label>
-                    <input onChange={this.handleChange} type="text" name="name" />
-                    <label>Employer Email</label>
-                    <input onChange={this.handleChange} type="text" name="email" />
-                    <label>Password</label>
-                    <input onChange={this.handleChange} type="password" name="password"></input>
-                    <button onClick={this.submit}>Sign up</button>
-                </form>
-            </div>
+            <Form style={{ padding: "2em" }}>
+                <FormGroup>
+                    <Label>Employer Name</Label>
+                    <Input onChange={this.handleChange} type="text" name="name" />
+                    <Label>Employer Email</Label>
+                    <Input onChange={this.handleChange} type="text" name="email" />
+                    <Label>Password</Label>
+                    <Input onChange={this.handleChange} type="password" name="password"></Input>
+                </FormGroup>
+                <Button onClick={this.submit}>Sign up</Button>
+            </Form>
         )
     }
 }

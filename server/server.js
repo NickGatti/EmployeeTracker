@@ -64,7 +64,7 @@ app.post('/employer/create', (req, res) => {
 app.post('/employer/login', (req, res) => {
     employerLogin({ email: req.body.email, password: req.body.password }, (err, result) => {
         if (err) {
-            res.status(500).json({ success: false })
+            res.json([{ success: false }])
         } else {
             result[0]._doc.success = true
             res.json(result)

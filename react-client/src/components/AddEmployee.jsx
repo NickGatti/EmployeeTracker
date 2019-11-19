@@ -2,7 +2,6 @@ require('babel-polyfill')
 import React from 'react'
 import axios from 'axios'
 
-import "../../../node_modules/bootswatch/dist/materia/bootstrap.min.css"
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 class AddEmployee extends React.Component {
@@ -53,7 +52,7 @@ class AddEmployee extends React.Component {
 
     render() {
         return (
-            <Form>
+            <Form style={{ padding: "2em" }}>
                 <FormGroup>
                     <Label htmlFor="firstName">First Name</Label>
                     <Input
