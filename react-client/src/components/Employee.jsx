@@ -26,13 +26,13 @@ export default ({ employee, updateList }) => {
     }
 
     return (
-        <div>
+        <div className="col-4">
             <Card>
                 <CardBody>
                     <CardTitle>{employee.firstName} {employee.lastName}</CardTitle>
                     <CardText>Rating: {employee.rating}</CardText>
-                    <CardBody>
-                        <Button onClick={upVote}>Upvote</Button> <Button onClick={downVote}>Downvote</Button> <Button onClick={deleteUser} color="danger">Delete</Button>
+                    <CardBody className="row">
+                        <div className="col"><Button onClick={upVote}>Upvote</Button> <Button onClick={downVote}>Downvote</Button> <Button onClick={deleteUser} color="danger">Delete</Button></div>
                     </CardBody>
                 </CardBody>
             </Card>

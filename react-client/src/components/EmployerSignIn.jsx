@@ -44,16 +44,18 @@ class EmployerSignIn extends React.Component {
 
     render() {
         return (
-            <Form style={{ padding: "2em" }}>
-                <FormGroup>
-                    <FormText>{!this.state.whoops ? '' : 'Invalid login'}</FormText>
-                    <Label>email</Label>
-                    <Input onChange={this.handleChange} type="text" name="email" />
-                    <Label>password</Label>
-                    <Input onChange={this.handleChange} type="password" name="password" />
-                </FormGroup>
-                <Button onClick={this.submit}>Login</Button>
-            </Form>
+            <div style={{ padding: "2em" }} className="container">
+                <Form className="col-6">
+                    <FormGroup>
+                        <FormText>{!this.state.whoops ? '' : 'Invalid login'}</FormText>
+                        <Label>email</Label>
+                        <Input onChange={this.handleChange} type="text" name="email" />
+                        <Label>password</Label>
+                        <Input onChange={this.handleChange} type="password" name="password" />
+                    </FormGroup>
+                    <Button onClick={this.submit}>Login</Button>
+                </Form>
+            </div>
         )
     }
 }

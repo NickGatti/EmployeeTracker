@@ -52,26 +52,28 @@ class AddEmployee extends React.Component {
 
     render() {
         return (
-            <Form style={{ padding: "2em" }}>
-                <FormGroup>
-                    <Label htmlFor="firstName">First Name</Label>
-                    <Input
-                        onChange={this.handleFirstName}
-                        id="firstName" name="firstName" type="text" />
-                    <Label htmlFor="lastName">Last Name</Label>
-                    <Input
-                        onChange={this.handleLastName}
-                        id="lastName" name="lastName" type="text" />
-                    <Label htmlFor="rating">Rating</Label>
-                    <Input
-                        onChange={this.handleRating}
-                        id="rating" name="rating" type="number" />
-                </FormGroup>
-                <FormText>{this.state.submitted && !this.state.error ? "Thank you!" : this.state.submitted && this.state.error ? "Sorry error!" : ''}</FormText>
-                <Button
-                    onClick={this.addEmployee}
-                >Submit</Button>
-            </Form>
+            <div style={{ padding: "2em" }} className="container">
+                <Form className="col-6">
+                    <FormGroup>
+                        <Label htmlFor="firstName">First Name</Label>
+                        <Input
+                            onChange={this.handleFirstName}
+                            id="firstName" name="firstName" type="text" />
+                        <Label htmlFor="lastName">Last Name</Label>
+                        <Input
+                            onChange={this.handleLastName}
+                            id="lastName" name="lastName" type="text" />
+                        <Label htmlFor="rating">Rating</Label>
+                        <Input
+                            onChange={this.handleRating}
+                            id="rating" name="rating" type="number" />
+                    </FormGroup>
+                    <FormText>{this.state.submitted && !this.state.error ? "Thank you!" : this.state.submitted && this.state.error ? "Sorry error!" : ''}</FormText>
+                    <Button
+                        onClick={this.addEmployee}
+                    >Submit</Button>
+                </Form>
+            </div>
         )
     }
 }

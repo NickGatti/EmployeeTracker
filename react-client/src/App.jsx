@@ -1,5 +1,5 @@
 require('babel-polyfill')
-import 'bootswatch/dist/slate/bootstrap.min.css';
+import 'bootswatch/dist/cosmo/bootstrap.min.css';
 import React from 'react'
 import {
     BrowserRouter as Router,
@@ -18,23 +18,25 @@ export default () => {
     return (
         <Router>
             <div style={{ padding: "2em" }}>
-                <ul>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/list">List employees</Link>
-                    </li>
-                    <li>
-                        <Link to="/add">Add employee</Link>
-                    </li>
-                    <li>
-                        <Link to="/employerSignUp">Employer Sign Up</Link>
-                    </li>
-                    <li>
-                        <Link to="/employerLogin">Employer Login</Link>
-                    </li>
-                </ul>
+                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                    <ul className="navbar-nav">
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/">Home</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/list">List employees</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/add">Add employee</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/employerSignUp">Employer Sign Up</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/employerLogin">Employer Login</Link>
+                        </li>
+                    </ul>
+                </nav>
                 <Switch>
                     <Route path="/list">
                         <EmployeeList />
@@ -53,6 +55,6 @@ export default () => {
                     </Route>
                 </Switch>
             </div>
-        </Router>
+        </Router >
     )
 }

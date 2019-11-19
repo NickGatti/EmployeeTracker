@@ -33,17 +33,19 @@ class EmployerSignUp extends React.Component {
 
     render() {
         return (
-            <Form style={{ padding: "2em" }}>
-                <FormGroup>
-                    <Label>Employer Name</Label>
-                    <Input onChange={this.handleChange} type="text" name="name" />
-                    <Label>Employer Email</Label>
-                    <Input onChange={this.handleChange} type="text" name="email" />
-                    <Label>Password</Label>
-                    <Input onChange={this.handleChange} type="password" name="password"></Input>
-                </FormGroup>
-                <Button onClick={this.submit}>Sign up</Button>
-            </Form>
+            <div style={{ padding: "2em" }} className="container">
+                <Form className="col-6">
+                    <FormGroup>
+                        <Label>Employer Name</Label>
+                        <Input onChange={this.handleChange} type="text" name="name" />
+                        <Label>Employer Email</Label>
+                        <Input onChange={this.handleChange} type="text" name="email" />
+                        <Label>Password</Label>
+                        <Input onChange={this.handleChange} type="password" name="password"></Input>
+                    </FormGroup>
+                    <Button onClick={this.submit}>Sign up</Button>
+                </Form>
+            </div>
         )
     }
 }
