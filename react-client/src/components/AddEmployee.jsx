@@ -44,8 +44,6 @@ class AddEmployee extends React.Component {
             password: localStorage.getItem('password')
         })
 
-        console.log(res.data)
-
         if (!res.data.success) {
             this.setState({ submitted: true, error: true })
         } else {
@@ -55,28 +53,26 @@ class AddEmployee extends React.Component {
 
     render() {
         return (
-            <div>
-                <Form>
-                    <FormGroup>
-                        <Label htmlFor="firstName">First Name</Label>
-                        <Input
-                            onChange={this.handleFirstName}
-                            id="firstName" name="firstName" type="text" />
-                        <Label htmlFor="lastName">Last Name</Label>
-                        <Input
-                            onChange={this.handleLastName}
-                            id="lastName" name="lastName" type="text" />
-                        <Label htmlFor="rating">Rating</Label>
-                        <Input
-                            onChange={this.handleRating}
-                            id="rating" name="rating" type="number" />
-                    </FormGroup>
-                    <Button
-                        onClick={this.addEmployee}
-                    >Submit</Button>
-                </Form>
-                <p>{this.state.submitted && !this.state.error ? "Thank you!" : this.state.submitted && this.state.error ? "Sorry error!" : ''}</p>
-            </div>
+            <Form>
+                <FormGroup>
+                    <Label htmlFor="firstName">First Name</Label>
+                    <Input
+                        onChange={this.handleFirstName}
+                        id="firstName" name="firstName" type="text" />
+                    <Label htmlFor="lastName">Last Name</Label>
+                    <Input
+                        onChange={this.handleLastName}
+                        id="lastName" name="lastName" type="text" />
+                    <Label htmlFor="rating">Rating</Label>
+                    <Input
+                        onChange={this.handleRating}
+                        id="rating" name="rating" type="number" />
+                </FormGroup>
+                <FormText>{this.state.submitted && !this.state.error ? "Thank you!" : this.state.submitted && this.state.error ? "Sorry error!" : ''}</FormText>
+                <Button
+                    onClick={this.addEmployee}
+                >Submit</Button>
+            </Form>
         )
     }
 }
