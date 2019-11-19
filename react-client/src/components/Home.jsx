@@ -3,7 +3,7 @@ import React from 'react'
 
 export default () => {
     return (
-        <div style={{ padding: "2em", margin: "2em" }}>
+        <div style={{ padding: "2em" }}>
             <h1>Employee Tracker</h1>
             <div className="container">
                 <br />
