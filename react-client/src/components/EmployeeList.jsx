@@ -1,3 +1,4 @@
+require('babel-polyfill')
 import React from 'react'
 import Employee from './Employee.jsx'
 import axios from 'axios'

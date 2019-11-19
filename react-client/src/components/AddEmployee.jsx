@@ -1,8 +1,9 @@
+require('babel-polyfill')
 import React from 'react'
 import axios from 'axios'
 
-// import "../../../node_modules/bootswatch/dist/materia/bootstrap.min.css"
-// import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import "../../../node_modules/bootswatch/dist/materia/bootstrap.min.css"
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 class AddEmployee extends React.Component {
     constructor() {
