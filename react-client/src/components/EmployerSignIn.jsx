@@ -10,7 +10,8 @@ class EmployerSignIn extends React.Component {
         this.state = {
             email: '',
             password: '',
-            whoops: false
+            whoops: false,
+            loggedIn: false
         }
         this.submit = this.submit.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -25,11 +26,13 @@ class EmployerSignIn extends React.Component {
 
         if (!res.data[0].success) {
             this.setState({
-                whoops: true
+                whoops: true,
+                loggedIn: false
             })
         } else {
             this.setState({
-                whoops: false
+                whoops: false,
+                loggedIn: true
             })
             localStorage.setItem('email', res.data[0].email)
             localStorage.setItem('password', res.data[0].password)
@@ -47,12 +50,13 @@ class EmployerSignIn extends React.Component {
             <div style={{ padding: "2em" }} className="container">
                 <Form className="col-6">
                     <FormGroup>
-                        <FormText>{!this.state.whoops ? '' : 'Invalid login'}</FormText>
+                        <FormText>{}</FormText>
                         <Label>email</Label>
                         <Input onChange={this.handleChange} type="text" name="email" />
                         <Label>password</Label>
                         <Input onChange={this.handleChange} type="password" name="password" />
                     </FormGroup>
+                    <FormText>{this.state.loggedIn ? 'Logged in!' : ''}{!this.state.whoops ? '' : 'Invalid login'}</FormText>
                     <Button onClick={this.submit}>Login</Button>
                 </Form>
             </div>
